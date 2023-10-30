@@ -19,12 +19,25 @@ def remove(item):
 def add(item):
     colorList.append(item)
 
+def finder(item):
+    for each in colorList:
+        if item == each:
+            return True
+        
+    return False
+
+def lastest():
+    return colorList[-1]
+
+
 
 if __name__ == '__main__':
-    # print(getlenCL())
-    # print(getColorList())
-    # remove('DarkSlateGray')
-    # print(getlenCL())
-    # add("Red")
-    # print(getlenCL())
-    print(colorList[random.randint(0, len(colorList)-1)])
+    print(getlenCL())
+    print(getColorList())
+    remove('DarkSlateGray')
+    print(getlenCL())
+    add("Red")
+    print(getlenCL())
+    # print(colorList[random.randint(0, len(colorList)-1)])
+    print(lastest())
+    print(finder("Red"))
