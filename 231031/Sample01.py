@@ -25,10 +25,22 @@ def display(sampleList:list) -> None:
     print()
 
 
+def randomIntGen(sampleList:list) -> int:
+    return r.randint(0, len(sampleList)-1)
 
+def lotto(sampleList:list) -> list:
+    l = list()
+    while(True):
+        temp = randomIntGen(sampleList)
+        if temp not in l:
+            l.append(temp)
+        if len(l) == 6:
+            break
+
+    return l
+    
 
 if __name__ == '__main__':
     temp01 = makeList()
-    temp02 = makeList()
     display(temp01)
-    display(temp02)
+    display(lotto(temp01))
