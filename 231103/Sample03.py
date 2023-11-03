@@ -39,18 +39,22 @@ def randomMove():
     xPos = rd.randint(-250, 250)
     yPos = rd.randint(-250, 250)
     pen.goto(xPos, yPos)
+    pen.pendown()
 
-def drawCircle(size):
+def sizeSelector() -> int:
     global window, pen
     xTemp = abs(window.screensize()[0]/2) - abs(pen.pos()[0])
     yTemp = abs(window.screensize()[1]/2) - abs(pen.pos()[1])
 
     if xTemp > yTemp:
-        pen.circle(yTemp/2)
-    elif xTemp < yTemp:
-        pen.circle(xTemp/2)
+        return yTemp/2
     else:
-        pen.circle(yTemp/2)
+        return xTemp/2
+
+def drawCircle():
+    global pen
+    pen.circle(sizeSelector())
+
 
 
 
