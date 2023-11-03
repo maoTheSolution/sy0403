@@ -53,7 +53,8 @@ def sizeSelector() -> int:
 
 def drawCircle():
     global pen
-    pen.circle(sizeSelector())
+    pen.circle(sizeSelector()/2)
+
 
 
 
