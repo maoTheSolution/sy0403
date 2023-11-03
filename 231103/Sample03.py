@@ -55,16 +55,29 @@ def drawCircle():
     global pen
     pen.circle(sizeSelector()/2)
 
+def genColor():
+    global colors 
+    colors = ["red", "green", "black", "yellow", "orange", "purple", "blue", "pink"]
 
+def paint():
+    global pen
+    pen.fillcolor(pickRandomColor())
+    pen.begin_fill()
+    drawCircle()
+    pen.end_fill()
+
+def pickRandomColor():
+    global colors
+    return colors[rd.randint(0, len(colors)-1)]
 
 
 
 if __name__ == "__main__":
     init("white", 700, 700)
-
+    genColor()
     for each in range(10):
         randomMove()
-        drawCircle()
+        paint()
     tt.done()
 
 
