@@ -20,16 +20,16 @@ class Node:
         else:
             self.data = data
 
-    def search(self, given) -> bool:
-        con = False
+    def search(self, given):
         if self.left:
             self.left.search(given)
-        if given == self.data:
-            con = True
         if self.right:
             self.right.search(given)
+        if given == self.data:
+            return 
 
-        return con
+        
+
 
     def printTree(self):
         if self.left:
@@ -55,5 +55,6 @@ root.insert(8)
 root.insert(10)
 
 
-root.printTree()
-print(root.search(4))
+# root.printTree()
+# print(root.search(4))
+print(type(root.search(4)))

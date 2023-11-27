@@ -11,3 +11,12 @@ for each in range(1, 27):
 
 def makeDict(list1, list2) -> dict:
     return dict()
+
+
+
+
+
+temp = dict()
+temp['a'] = 1
+
+print(temp)

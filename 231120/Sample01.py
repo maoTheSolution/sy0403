@@ -27,10 +27,21 @@ class Node:
         if self.right:
             self.right.printTree()
 
+    def printTree2(self):
+        if self.right:
+            self.right.printTree2()
+        print(self.data)
+        if self.left:
+            self.left.printTree2()
+        # print(self.data)
 
-root = Node(12)
-root.insert(6)
-root.insert(14)
+root = Node(7)
 root.insert(3)
+root.insert(9)
+root.insert(1)
+root.insert(4)
+root.insert(8)
+root.insert(10)
+
 
 root.printTree()
