@@ -28,5 +28,12 @@ print(len(f_titles))
 # print(f_prices)
 result = dict(zip(f_titles, f_prices))
 
-for each in result.items():
-    print(each)
+
+f = open('./result.txt', 'w')
+
+for each in result.keys():
+    f.write(each + "\t" + result[each] + "\n")
+
+
+
+
