@@ -1,5 +1,5 @@
 import pandas as pd
-import math 
+import calendar 
 
 months = [5, 9, 10, 11]
 dfs = []
@@ -26,7 +26,7 @@ for eachDF in dfs:
     
 
 for index in range(0, len(menu)):
-    if menu[index].strip() != 'ㅡ' or menu[index].strip() != '. . .':
+    if menu[index].strip() != 'ㅡ' and menu[index].strip() != '. . .':
         menuHelper.append(menu[index].strip())
 
 menu = menuHelper
@@ -38,8 +38,16 @@ for index in range(len(menu)):
 
 
 
-print(menu)
-# import calendar 
+c = calendar.TextCalendar(calendar.MONDAY)
+print(c)
+
+for i in c.itermonthdays(2023, 12):
+    if i ==0:
+        result.append(None)
+    else :
+        result.apppend(i)
+
+print(result)
 
 # def makeCalendar(year, month) -> list:
 #     c = calendar.TextCalendar(calendar.MONDAY)
