@@ -1,6 +1,10 @@
 import pandas as pd
+import math 
+
 months = [5, 9, 10, 11]
 dfs = []
+menu = []
+menuHelper = list()
 for eachM in months:
     sheets = pd.ExcelFile('./'+str(eachM)+"월 월간 메뉴표.xlsx").sheet_names
     for eachS in sheets:
@@ -14,19 +18,22 @@ for eachM in months:
         dfs.append(df)
 
 for eachDF in dfs:
-    for eachIndex in eachDF.index:
+    for eachIndex in eachDF.index[1::2]:
         for eachD in ['월', '화', '수', '목', '금']:
-            print(eachDF.at[3, eachD])
-        
-            
+            temp = eachDF.at[eachIndex, eachD]
+            if type(temp) == str: 
+                menu.append(eachDF.at[eachIndex, eachD])
+    
+
+for index in range(0, len(menu)):
+    if menu[index].strip() != 'ㅡ':
+        menu[index] = menu[index]
+    else:
+        menu.remove(menu[index])
 
 
 
-
-
-
-
-
+print(menu)
 
 
 
