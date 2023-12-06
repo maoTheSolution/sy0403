@@ -4,7 +4,7 @@ import math
 months = [5, 9, 10, 11]
 dfs = []
 menu = []
-menuHelper = list()
+menuHelper = []
 for eachM in months:
     sheets = pd.ExcelFile('./'+str(eachM)+"월 월간 메뉴표.xlsx").sheet_names
     for eachS in sheets:
@@ -26,17 +26,19 @@ for eachDF in dfs:
     
 
 for index in range(0, len(menu)):
-    if menu[index].strip() != 'ㅡ':
-        menu[index] = menu[index]
-    else:
-        menu.remove(menu[index])
+    if menu[index].strip() != 'ㅡ' or menu[index].strip() != '. . .':
+        menuHelper.append(menu[index].strip())
+
+menu = menuHelper
+
+for index in range(len(menu)):
+    if '\n' in menu[index]:
+        result = menu[index].split('\n')[0] + " " + menu[index].split('\n')[1]
+        menu[index] = result 
 
 
 
 print(menu)
-
-
-
 # import calendar 
 
 # def makeCalendar(year, month) -> list:
