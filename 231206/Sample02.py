@@ -1,6 +1,17 @@
-
-
 import pandas as pd
+months = [5, 9, 10, 11]
+for eachM in months:
+    sheets = pd.ExcelFile('./'+str(eachM)+"월 월간 메뉴표.xlsx").sheet_names
+    for eachS in sheets:
+        df = pd.read_excel('./'+str(eachM)+"월 월간 메뉴표.xlsx", sheet_name=eachS, skiprows=[0,1,2,14,15,16])
+        # print(df)
+        temp = list()
+        for eachD in df.columns:
+            if eachD not in  ['월', '화', '수', '목', '금']:
+                temp.append(eachD)
+        df = df.drop(columns=temp)
+        print(df)
+            
 
 
 
