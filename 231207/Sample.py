@@ -62,14 +62,19 @@ for each in f_week.values():
     num_menu = num_menu + len(each)
     num_menu = num_menu - each.count(0)
 
-print(num_menu)
+# print(num_menu)
 # print(menu)
-# forThisMonth = list()
-# while(True):
-    # n = random.randint(0, len(menu)-1)
-    # if menu[n] not in forThisMonth:
-    #     forThisMonth.append(menu[n])
-    # if len(forThisMonth) == num_menu:
-    #     break
+forThisMonth = list()
+while(True):
+    n = random.randint(0, len(menu)-1)
+    if menu[n] not in forThisMonth:
+        forThisMonth.append(menu[n])
+    if len(forThisMonth) == num_menu:
+        break
 
 # print(forThisMonth)
+f_menu = f_week.copy()
+for each in f_week.values():
+    for eachV in range(0, len(each)):
+        if each[eachV] != 0:
+            
