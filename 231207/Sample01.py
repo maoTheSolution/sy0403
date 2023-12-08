@@ -13,5 +13,4 @@ for eachW in week:
     f_week[eachW] = temp
     index = index + 1
 
-print(f_week)
     

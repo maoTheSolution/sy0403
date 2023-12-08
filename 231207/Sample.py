@@ -1,5 +1,6 @@
 import pandas as pd
 import calendar 
+import random
 
 months = [5, 9, 10, 11]
 dfs = []
@@ -21,7 +22,7 @@ for eachDF in dfs:
     for eachIndex in eachDF.index[1::2]:
         for eachD in ['월', '화', '수', '목', '금']:
             temp = eachDF.at[eachIndex, eachD]
-            if type(temp) == str: 
+            if type(temp) == str and temp not in menu: 
                 menu.append(eachDF.at[eachIndex, eachD])
     
 
@@ -37,15 +38,38 @@ for index in range(len(menu)):
         menu[index] = result 
 
 
-print(menu)
+menu.remove('피자')
+# print(len(menu))
 
-# c = calendar.TextCalendar(calendar.MONDAY)
-# print(c)
+c = calendar.TextCalendar(calendar.MONDAY)
+year = 2023
+month = 1
+index = 0
+week = ["월", "화", "수", "목", "금"]
+f_week = dict()
+for eachW in week:
+    temp = list()
+    for each in list(c.itermonthdays(year, month))[index::7]:
+        temp.append(each)
+    f_week[eachW] = temp
+    index = index + 1
 
-# for i in c.itermonthdays(2023, 12):
-#     if i ==0:
-#         result.append(None)
-#     else :
-#         result.apppend(i)
 
-# print(result)
+
+# print(f_week)
+num_menu = 0
+for each in f_week.values():
+    num_menu = num_menu + len(each)
+    num_menu = num_menu - each.count(0)
+
+print(num_menu)
+# print(menu)
+# forThisMonth = list()
+# while(True):
+    # n = random.randint(0, len(menu)-1)
+    # if menu[n] not in forThisMonth:
+    #     forThisMonth.append(menu[n])
+    # if len(forThisMonth) == num_menu:
+    #     break
+
+# print(forThisMonth)
