@@ -1,6 +1,8 @@
 import pandas as pd
 import calendar 
 import random
+from tkinter import *
+from tkinter import ttk
 
 months = [5, 9, 10, 11]
 dfs = []
@@ -25,7 +27,6 @@ for eachDF in dfs:
             if type(temp) == str and temp not in menu: 
                 menu.append(eachDF.at[eachIndex, eachD])
     
-
 for index in range(0, len(menu)):
     if menu[index].strip() != 'ㅡ' and menu[index].strip() != '. . .':
         menuHelper.append(menu[index].strip())
@@ -39,7 +40,6 @@ for index in range(len(menu)):
 
 
 menu.remove('피자')
-# print(len(menu))
 
 c = calendar.TextCalendar(calendar.MONDAY)
 year = 2023
@@ -54,16 +54,11 @@ for eachW in week:
     f_week[eachW] = temp
     index = index + 1
 
-
-
-# print(f_week)
 num_menu = 0
 for each in f_week.values():
     num_menu = num_menu + len(each)
     num_menu = num_menu - each.count(0)
 
-# print(num_menu)
-# print(menu)
 forThisMonth = list()
 while(True):
     n = random.randint(0, len(menu)-1)
@@ -72,7 +67,6 @@ while(True):
     if len(forThisMonth) == num_menu:
         break
 
-# print(forThisMonth)
 f_menu = f_week.copy()
 i = 0
 for each in f_week.keys():
@@ -85,8 +79,29 @@ for each in f_week.keys():
             i = i + 1
     f_menu[each] = temp
 
-# print(f_menu)
-
-
 df_menu = pd.DataFrame(data=f_menu)
 df_menu.to_excel('./menu' + str(year) + "_" + str(month) + ".xlsx", index=False)
+
+win = Tk()
+win_w = 250
+win_h = 250
+w = win.winfo_screenwidth()//2 - win_w//2
+h = win.winfo_screenheight()//2 - win_h//2
+win.geometry(str(win_w)+"x"+str(win_h)+"+"+str(w)+"+"+str(h))
+
+def display_text():
+   global entry
+   info = entry.get()
+   label.configure(text=info)
+   print(info)
+
+label=Label(win, text="", font=("Courier 22 bold"))
+label.pack()
+
+entry= Entry(win, width= 40)
+entry.focus_set()
+entry.pack()
+
+ttk.Button(win, text= "Click",width= 20, command= display_text).pack(pady=20)
+
+win.mainloop()
