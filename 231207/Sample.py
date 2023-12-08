@@ -43,7 +43,7 @@ menu.remove('피자')
 
 c = calendar.TextCalendar(calendar.MONDAY)
 year = 2023
-month = 1
+month = 12
 index = 0
 week = ["월", "화", "수", "목", "금"]
 f_week = dict()
@@ -74,7 +74,19 @@ while(True):
 
 # print(forThisMonth)
 f_menu = f_week.copy()
-for each in f_week.values():
-    for eachV in range(0, len(each)):
-        if each[eachV] != 0:
-            
+i = 0
+for each in f_week.keys():
+    temp = list()
+    for eachE in f_week[each]:
+        if eachE == 0:
+            temp.append(' ')
+        else:
+            temp.append(forThisMonth[i])
+            i = i + 1
+    f_menu[each] = temp
+
+# print(f_menu)
+
+
+df_menu = pd.DataFrame(data=f_menu)
+df_menu.to_excel('./menu' + str(year) + "_" + str(month) + ".xlsx", index=False)
