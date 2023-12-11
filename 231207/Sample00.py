@@ -87,8 +87,15 @@ def run(year, month):
                 i = i + 1
         f_menu[each] = temp
 
+    for each in week:
+        temp = list()
+        for index in range(0,len(f_menu[each])):
+            temp.append(f_week[each][index])
+            temp.append(f_menu[each][index])
+        f_menu[each] = temp
+
     df_menu = pd.DataFrame(data=f_menu)
-    df_menu.to_excel('~/Downloads/menu' + str(year) + "_" + str(month) + ".xlsx", index=False)
+    df_menu.to_excel('./menu' + str(year) + "_" + str(month) + ".xlsx", index=False)
 
 def display_text():
    global entry
