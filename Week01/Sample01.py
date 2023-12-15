@@ -50,6 +50,13 @@ class MBTI:
         self.mbtiScore()
         self.makeUsers(10)
         print(self.users)
+
+    def makeTeam(self, num) -> list:
+        for eu01 in range(0, len(self.users.keys()[:-1])):
+            for eu02 in range(eu01 + 1, len(self.users.keys()[1:])):
+                (self.users[eu01], self.users[eu02])
+
+
         
 
 if __name__ == "__main__":
