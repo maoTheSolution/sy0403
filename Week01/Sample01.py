@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup as bs
 import random
 
 class MBTI:
-    mbti = list()
-    result = dict()
-    users = dict()
+    def __init__(self) -> None:
+        self.mbti = list()
+        self.result = dict()
+        self.users = dict()
 
     def mbtiScore(self):
         url = 'https://testmoa.com/mbti-compatibility/'
@@ -27,10 +28,10 @@ class MBTI:
 
 
     def makeUsers(self, num):
-        while(len(self.result) < num):
+        while(len(self.users) < num):
             tempName = self.makeName()
-            if tempName not in self.result:
-                self.result[tempName] = self.chooseMBTI()
+            if tempName not in self.users:
+                self.users[tempName] = self.chooseMBTI()
 
     def makeName(self) -> str:
         al = [chr(each) for each in range(97, 123)]
@@ -48,11 +49,12 @@ class MBTI:
     def ready(self):
         self.mbtiScore()
         self.makeUsers(10)
-        print(self.result)
+        print(self.users)
         
 
-    if __name__ == "__main__":
-        ready()
+if __name__ == "__main__":
+    m = MBTI()
+    m.ready()
     
 
 
