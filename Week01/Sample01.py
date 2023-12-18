@@ -49,12 +49,25 @@ class MBTI:
     def ready(self):
         self.mbtiScore()
         self.makeUsers(10)
-        print(self.users)
+        self.makeTeam(2)
 
     def makeTeam(self, num) -> list:
-        for eu01 in range(0, len(self.users.keys()[:-1])):
-            for eu02 in range(eu01 + 1, len(self.users.keys()[1:])):
-                (self.users[eu01], self.users[eu02])
+        temp = list()
+        targetList = list(self.users.keys())
+        for each in targetList[1:]:
+            for other in targetList[:-1]:
+                temp.append((self.users[each], self.users[other]))
+
+
+        for each in temp:
+            if each not in self.result:
+                self.result[each] = 2
+                print(2)
+            else:
+                print(self.result[each])
+        return temp
+    
+
 
 
         
