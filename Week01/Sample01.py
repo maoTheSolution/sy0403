@@ -15,6 +15,9 @@ class MBTI:
         for each in soup.find_all('h3',{'class':'wp-block-heading'}):
             self.mbti.append(each.text[:4])
     
+        # remove MBTI from the mbti list
+        self.mbti = self.mbti[:-1]
+
         for each in soup.find_all('figure', {'wp-block-table aligncenter is-style-stripes'}):
             for matched in [e.text for e in each.find_all('td')[3] if e.text != ', ' and e.text != ',\xa0']:
                 self.result[(each.text[:4], matched.strip())] = 5
@@ -48,8 +51,6 @@ class MBTI:
     
     def ready(self):
         self.mbtiScore()
-        self.makeUsers(10)
-        self.makeTeam(2)
 
     def makeTeam(self, num) -> list:
         temp = list()
@@ -69,12 +70,58 @@ class MBTI:
     
 
 
+class Person:
 
-        
+    name = None
+    mbti = None
+    con = None
+
+
+    def __init__(self, name, mbti, con=True):
+        self.name = name
+        self.mbti = mbti
+        self.con = con
+
+    # getter 
+    def getName(self):
+        return self.name
+
+    def getMbti(self):
+        return self.mbti
+    
+    def getCon(self):
+        return self.con
+    
+    # setter
+    def setName(self, name:str):
+        self.name = name
+        print("A new name is updated!")
+
+    def setMbti(self, mbti:str):
+        self.mbti = mbti
+        print("A new mbti is updated!")
+
+    def setCon(self, con:bool):
+        self.con = con
+        print("A new condition is updated!")
+
+    def display(self):
+        print(self.name, " : ", self.mbti, " : ", self.con)
+
 
 if __name__ == "__main__":
     m = MBTI()
     m.ready()
+    personList = list()
+    for each in range(100):
+        personList.append(Person(m.makeName(), m.chooseMBTI()))
+    
+    for each in personList:
+        each.display()
+
+
+
+    # Person("Steven", "ENTJ")
     
 
 
