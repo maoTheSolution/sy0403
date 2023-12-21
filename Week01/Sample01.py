@@ -69,13 +69,11 @@ class MBTI:
         return temp
     
 
-
 class Person:
 
     name = None
     mbti = None
     con = None
-
 
     def __init__(self, name, mbti, con=True):
         self.name = name
@@ -109,20 +107,43 @@ class Person:
         print(self.name, " : ", self.mbti, " : ", self.con)
 
 
+class Matching:
+    result = None
+    num = None
+
+    def __init__(self) -> None:
+        result = list()
+        # self.num = num
+
+    # def makeTeam(num):
+
+    def makeTeam(self, target:list):
+        for first in range(0, len(target)-1):
+            for second in range(1, len(target)):
+                target[first].display()
+                target[second].display()
+            print("*"*50)
+
+
+    
+
+    
+    
+
 if __name__ == "__main__":
     m = MBTI()
     m.ready()
     personList = list()
-    for each in range(100):
+    for each in range(10):
         personList.append(Person(m.makeName(), m.chooseMBTI()))
     
     for each in personList:
         each.display()
 
-
-
-    # Person("Steven", "ENTJ")
+    helper = Matching()
+    helper.makeTeam(personList)
     
+
 
 
     
