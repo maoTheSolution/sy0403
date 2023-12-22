@@ -122,17 +122,17 @@ class Matching:
         for each in target:
             print(each.getName(), each.getMbti())
         print("*"*100)
+
         for first in range(0, len(target)-1):
-            t = list()
-            p = list()
             for second in range(first+1, len(target)):
-                t.append([target[first].getName(), target[second].getName()])
-                t.append([target[first].getMbti(), target[second].getMbti()])
+                p = list()
+                p.append([target[first].getName(), target[second].getName()])
+                p.append([target[first].getMbti(), target[second].getMbti()])
                 try:
-                    t.append(mbti[(target[first].getMbti(), target[second].getMbti())])
+                    p.append(mbti[(target[first].getMbti(), target[second].getMbti())])
                 except KeyError:
-                    t.append(2)
-                temp.append(t)
+                    p.append(2)
+                temp.append(p)
 
         return temp
 
@@ -154,8 +154,9 @@ if __name__ == "__main__":
     helper = Matching()
     teamList = helper.makeTeam(personList, m.result)
 
-    for each in teamList:
-        print(each)
+    # for each in teamList:
+    #     print(each)
+    print(teamList)
     
 
 
