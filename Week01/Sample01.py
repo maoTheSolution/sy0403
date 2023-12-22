@@ -156,8 +156,19 @@ if __name__ == "__main__":
 
     # for each in teamList:
     #     print(each)
-    print(teamList)
+    # print(teamList)
+
+    target = list()
+    tt = sorted([z for x,y,z in teamList])
+    print(tt)
+    outcome = list()
+    for each in tt:
+        for el in teamList:
+            if each == el[2] and el not in outcome:
+                outcome.insert(0, el)
     
+    print(outcome)
+
 
 
 
