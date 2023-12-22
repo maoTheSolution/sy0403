@@ -119,9 +119,9 @@ class Matching:
 
     def makeTeam(self, target:list, mbti:dict) -> list:
         temp = list()
-        for each in target:
-            print(each.getName(), each.getMbti())
-        print("*"*100)
+        # for each in target:
+            # print(each.getName(), each.getMbti())
+        # print("*"*100)
 
         for first in range(0, len(target)-1):
             for second in range(first+1, len(target)):
@@ -160,14 +160,23 @@ if __name__ == "__main__":
 
     target = list()
     tt = sorted([z for x,y,z in teamList])
-    print(tt)
+    # print(tt)
     outcome = list()
     for each in tt:
         for el in teamList:
             if each == el[2] and el not in outcome:
                 outcome.insert(0, el)
     
-    print(outcome)
+    # print(outcome)
+    print(outcome[0][0])
+    firstP = outcome[0][0][0]
+    secondP = outcome[0][0][1]
+
+    
+    firstP.setCon(False)
+    secondP.setCon(False)
+    for each in personList:
+        each.display()
 
 
 
